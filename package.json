@@ -1,0 +1,10 @@
+{
+  "name": "discourse-local-site-contacts",
+  "version": "1.0",
+  "repository": "https://github.com/discourse/discourse-local-site-contacts",
+  "author": "Discourse",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-discourse": "^3.1.0"
+  }
+}
