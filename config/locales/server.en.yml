@@ -1,1 +1,4 @@
 en:
+  site_settings:
+    local_site_contacts_enabled: Enable the local-site-contacts plugin
+    local_site_contacts: A list of locale-specific site contacts. If a locale is not included in this list, or the username is invalid, the regular 'site contact username' will be used.

@@ -1,4 +1,6 @@
 plugins:
-  plugin_name_enabled:
-    default: true
-    client: true
+  local_site_contacts_enabled:
+    default: false
+  local_site_contacts:
+    default: "[]"
+    json_schema: LocalSiteContacts::JsonSchemaSiteSetting
