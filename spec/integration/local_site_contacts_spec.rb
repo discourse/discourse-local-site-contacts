@@ -30,10 +30,10 @@ describe "discourse-local-site-contacts" do
     it "uses the configured users when enabled" do
       expect(system_message_sender.username).to eq(en_contact.username)
 
-      recipient.update(locale: "fr")
+      recipient.update!(locale: "fr")
       expect(system_message_sender.username).to eq(fr_contact.username)
 
-      recipient.update(locale: "de")  # No local contact for this locale
+      recipient.update!(locale: "de")  # No local contact for this locale
       expect(system_message_sender.username).to eq("system")
     end
 
