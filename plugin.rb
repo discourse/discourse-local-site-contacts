@@ -14,6 +14,9 @@ module ::LocalSiteContacts
     def self.schema
       @schema ||= {
         "title": "Localised Links",
+        "description": <<~DESC,
+          Define a site contact for each locale. Users must be staff. If you configure the same locale twice, only the first definition will be used.
+        DESC
         "type": "array",
         "items": {
           "type": "object",
@@ -21,7 +24,9 @@ module ::LocalSiteContacts
           "properties": {
             "locale": {
               "type": "string",
-              "default": "en"
+              "default": "en",
+              "enum": I18n.available_locales.map(&:to_s),
+              "description": "(ISO 639-1)"
             },
             "username": {
               "type": "string",
