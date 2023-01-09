@@ -1,5 +1,3 @@
-# **Plugin Name** Plugin
+# Local Site Contacts Plugin
 
-**Plugin Summary**
-
-For more information, please see: **url to meta topic**
+Allows the 'site contact username' to be customized on a per-locale basis.
