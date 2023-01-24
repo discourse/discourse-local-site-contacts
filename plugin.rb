@@ -13,32 +13,33 @@ module ::LocalSiteContacts
   class JsonSchemaSiteSetting
     def self.schema
       @schema ||= {
-        "title": "Localised Links",
-        "description": <<~DESC,
+        title: "Localised Links",
+        description: <<~DESC,
           Define a site contact for each locale. Users must be staff. If you configure the same locale twice, only the first definition will be used.
         DESC
-        "type": "array",
-        "items": {
-          "type": "object",
-          "title": "Local Site Contact",
-          "properties": {
-            "locale": {
-              "type": "string",
-              "default": "en",
-              "enum": I18n.available_locales.map(&:to_s),
-              "description": "(ISO 639-1)"
+        type: "array",
+        items: {
+          type: "object",
+          title: "Local Site Contact",
+          properties: {
+            locale: {
+              type: "string",
+              default: "en",
+              enum: I18n.available_locales.map(&:to_s),
+              description: "(ISO 639-1)",
             },
-            "username": {
-              "type": "string",
-              "default": "system"
-            }
-          }
-        }
+            username: {
+              type: "string",
+              default: "system",
+            },
+          },
+        },
       }
     end
   end
 
-  class InvalidSettingError < StandardError; end
+  class InvalidSettingError < StandardError
+  end
 
   def self.for_locale(locale)
     options = JSON.parse(SiteSetting.local_site_contacts)
@@ -52,9 +53,13 @@ module ::LocalSiteContacts
       if user && user.staff?
         return user
       elsif user
-        Rails.logger.error("local_site_contact user for #{locale} is not a staff member: #{current_item["username"]}")
+        Rails.logger.error(
+          "local_site_contact user for #{locale} is not a staff member: #{current_item["username"]}",
+        )
       else
-        Rails.logger.error("Unable to find local_site_contacts user for #{locale}: #{current_item["username"]}")
+        Rails.logger.error(
+          "Unable to find local_site_contacts user for #{locale}: #{current_item["username"]}",
+        )
       end
     end
 

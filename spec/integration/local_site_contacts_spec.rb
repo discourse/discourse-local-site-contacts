@@ -15,7 +15,7 @@ describe "discourse-local-site-contacts" do
     SiteSetting.allow_user_locale = true
     SiteSetting.local_site_contacts = [
       { locale: "en", username: en_contact.username },
-      { locale: "fr", username: fr_contact.username }
+      { locale: "fr", username: fr_contact.username },
     ].to_json
   end
 
@@ -33,14 +33,12 @@ describe "discourse-local-site-contacts" do
       recipient.update!(locale: "fr")
       expect(system_message_sender.username).to eq(fr_contact.username)
 
-      recipient.update!(locale: "de")  # No local contact for this locale
+      recipient.update!(locale: "de") # No local contact for this locale
       expect(system_message_sender.username).to eq("system")
     end
 
     it "ignores missing users" do
-      SiteSetting.local_site_contacts = [
-        { locale: "en", username: SecureRandom.hex },
-      ].to_json
+      SiteSetting.local_site_contacts = [{ locale: "en", username: SecureRandom.hex }].to_json
       expect(system_message_sender.username).to eq("system")
     end
 
@@ -59,5 +57,4 @@ describe "discourse-local-site-contacts" do
       expect(system_message_sender.username).to eq("system")
     end
   end
-
 end
