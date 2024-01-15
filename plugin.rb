@@ -5,7 +5,6 @@
 # version: 1.0
 # authors: Discourse Team
 # url: https://github.com/discourse/discourse-local-site-contacts
-# transpile_js: true
 
 enabled_site_setting :local_site_contacts_enabled
 
