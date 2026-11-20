@@ -12,7 +12,6 @@ describe "discourse-local-site-contacts" do
   end
 
   before do
-    SiteSetting.allow_user_locale = true
     SiteSetting.local_site_contacts = [
       { locale: "en", username: en_contact.username },
       { locale: "fr", username: fr_contact.username },
